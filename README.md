@@ -19,3 +19,4 @@ Query the posts from the database and display it in a Visualforce email template
     </messaging:htmlEmailBody>
 </messaging:emailTemplate>
 ```
+4. Finally not included in this repository is the batch processing apex class that sends out the email and scheduling the emails to be sent out.
