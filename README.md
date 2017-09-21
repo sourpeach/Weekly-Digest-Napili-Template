@@ -9,13 +9,13 @@ Query the posts from the database and display it in a Visualforce email template
 
 1. Create a Apex Class controller(TopicWeeklyDigestController) to pull out all the posts you need. To do this a bit of good to know information is that the chatter, chatter answer(Questions) and the Napili template forum posts all sit in the object "FeedItem" but separt
 
-2. Create a Visualforce component(WeeklyDigestVisualForceComp) to display all the post content(variables).
+2. Create a Visualforce component(WeeklyDigestComp.vfc) to display all the post content(variables).
 
 3. Embed the Visualforce component into a visualforce email template.
 ```html
 <messaging:emailTemplate subject="Your Visualforce email subject" recipientType="User" > 
     <messaging:htmlEmailBody >
-    <c:WeeklyDigest /> <!--insert your Visualforce component here!-->
+    <c:WeeklyDigestComp /> <!--insert your Visualforce component here!-->
     </messaging:htmlEmailBody>
 </messaging:emailTemplate>
 ```
