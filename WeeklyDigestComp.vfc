@@ -12,7 +12,7 @@
                 <br/>
             </div>
           
-		  <!--displays the tile of the post and the link-->
+		  <!--displays the title of the post and the link-->
             <h1 style="font-weight:bold; margin: 5px 0 5px 0; font-size:18px;">
 			<!--*note the custom label used for the url of the sites.com-->
                 <apex:outputLink value="{!$Label.CustomLabel}/question/{!f.id}">{!f.Title}</apex:outputLink>
