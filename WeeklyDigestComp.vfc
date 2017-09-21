@@ -1,0 +1,31 @@
+<apex:component controller="TopicWeeklyDigestController" access="global">
+
+<!--repeat tag is used to post all the different variables that are queried for every post-->
+    <apex:repeat value="{!feeds}" var="f">
+        <apex:outputPanel style="margin:0 ;padding: 40px;text-align: left; font-family: arial;">
+            <!--Displays the author of the post and date of the post-->
+			<div style="font-size: 10px;">
+                <apex:outputText value="{!f.CreatedBy.FirstName} {!f.CreatedBy.LastName}"/> asked a question.<br/>
+                <apex:outputText value="{0, date, MMMM d','  yyyy}">
+                <apex:param value="{!f.CreatedDate}" /> 
+                </apex:outputText>
+                <br/>
+            </div>
+          
+		  <!--displays the tile of the post and the link-->
+            <h1 style="font-weight:bold; margin: 5px 0 5px 0; font-size:18px;">
+			<!--*note the custom label used for the url of the sites.com-->
+                <apex:outputLink value="{!$Label.CustomLabel}/question/{!f.id}">{!f.Title}</apex:outputLink>
+            </h1>
+			
+			<!--displays the body of the post up to 200 characters and affix "(read more)" at the end of the text if the post is longer than 200 character and hyperlinked to the post-->
+            <div style="font-size:12px;font-weight:normal">
+                <apex:outputText style="padding:0;margin:0;line-height:18px" value="{!left(f.Body,200)}&hellip; " styleClass="text-excerpt" escape="false" /> 
+                <apex:outputLink style=" text-decoration: none;" value="{!$Label.CustomLabel}/question/{!f.id}" rendered="{!IF(len(f.Body)>200,true, false)}"> (read more)</apex:outputLink>
+           </div>
+
+            <br/>
+            <hr/>
+        </apex:outputPanel>  
+    </apex:repeat> 
+</apex:component>
