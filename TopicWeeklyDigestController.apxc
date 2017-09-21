@@ -1,0 +1,26 @@
+public with sharing class TopicWeeklyDigestController {
+    
+    PUBLIC LIST<FeedItem> getFeeds(){
+        
+        SET<FeedItem> results = NEW SET<FeedItem>([SELECT 
+                                                             Id,
+                                                             CreatedDate, 
+                                                             Type, 
+                                                             Title, 
+                                                             Body, 
+                                                             CreatedBy.FirstName, 
+                                                             CreatedBy.LastName 
+                                                             FROM FeedItem 
+                                                             WHERE Type = 'QuestionPost' 
+                                                             AND ID IN (Select EntityId 
+                                                                        FROM TopicAssignment 
+                                                                        WHERE EntityType = 'FeedItem' 
+                                                                        AND Topic.name 
+                                                                        IN ('<insert topic name>') //insert your topic name 
+                                                                       )
+                                                             AND CreatedDate = LAST_N_DAYS:7 //Gets the post from last 7 days 
+                                                             ORDER BY CreatedDate DESC]); //sort them descending by date posted
+             
+        return results;
+    }
+}
