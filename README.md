@@ -7,7 +7,7 @@ Salesforce Communities Napili Template offers forum topics as part of its featur
 <strong>Solution:</strong>
 Query the posts from the database and display it in a Visualforce email template. 
 
-1. Create a Apex Class controller(TopicWeeklyDigestController.apxc) to pull out all the posts you need. To do this a bit of good to know information is that the chatter, chatter answer(Questions) and the Napili template forum posts all sit in the object "FeedItem" but separt
+1. Create a Apex Class controller(TopicWeeklyDigestController.apxc) to pull out all the posts you need. To do this a bit of good to know information is that the chatter, chatter answer(Questions) and the Napili template forum posts all sit in the object "FeedItem" but categorized in different "Type". 
 
 2. Create a Visualforce component(WeeklyDigestComp.vfc) to display all the post content(variables).
 
